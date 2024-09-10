@@ -54,8 +54,7 @@ void process(){
 RotaryOutput get_event(){
   RotaryOutput event = RotaryOutput::NONE;
   cli();
-  if (!q.isEmpty())
-    q.pop(&event);
+  q.pop(&event);
   sei();
   return event;
 }
