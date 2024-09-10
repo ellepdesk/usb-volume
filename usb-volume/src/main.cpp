@@ -78,6 +78,7 @@ void setup() {
   // set up timer to call Rotary::process
   setupTimerInterrupt();
 
+  Consumer.begin();
   Keyboard.begin();
 }
 
@@ -86,19 +87,19 @@ void loop() {
   auto event = get_event();
   switch(event){
     case RotaryOutput::BTN_SHORT:
-      Keyboard.write(KEY_VOLUME_MUTE);
+      Keyboard.write(KEY_F20);
       break;
 
     case RotaryOutput::BTN_LONG:
-      Keyboard.write(MEDIA_PLAY_PAUSE);
+      Consumer.write(MEDIA_VOLUME_MUTE);
       break;
 
     case RotaryOutput::CCW:
-      Keyboard.write(KEY_VOLUME_DOWN);
+      Consumer.write(MEDIA_VOLUME_DOWN);
       break;
 
     case RotaryOutput::CW:
-      Keyboard.write(KEY_VOLUME_UP);
+      Consumer.write(MEDIA_VOLUME_UP);
       break;
 
     default:
